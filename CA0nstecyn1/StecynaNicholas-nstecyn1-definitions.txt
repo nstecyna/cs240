@@ -1,0 +1,14 @@
+find
+The find command searches a directory for a specified file. It will use the current directory automatically, if another one is not specified. The command searches by using the rules of precedence.
+
+pwd
+The pwd command prints out the name of the current working directory. The command will not look for symlinks unless specified by the -L flag.
+
+mkdir
+The mkdir command will make a directory or directories, if they do not already exist in the current working directory.
+
+more
+The make command uses a makefile to maintain groups of programs. Every time the make command is called, it will determine which pieces of a program specified in the makefile need to be recompiled, and recompiles them.
+
+mv
+The mv command either renames a file or moves it into a specified directory.
