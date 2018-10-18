@@ -17,19 +17,17 @@ class LLC {
 
         LLC();
         LLC(const LLC& other);
-        void operator=(LLC other);
+        LLC& operator=(const LLC &other);
         ~LLC();
         bool contains(const string & s);
         bool insert(const string & s);
 	void remove(const string & s);
 	void shuffle();
-	LLC operator+(LLC other);
+	LLC operator+(const LLC &other);
 	void head(int n);
 	string tail();
-	ostream& operator << (const LLC& llc);
+	friend ostream& operator << (ostream & out, const LLC& llc);
 	void operator+=(int n);
 	int len();
-	void join(LLC &other);
-
-	Node * getFirst();
+	void join(const LLC &other);
 }; 

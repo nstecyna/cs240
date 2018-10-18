@@ -10,30 +10,23 @@ LLC::LLC() {
 }
 
 LLC::LLC(const LLC& other) {
-    LLC copy;
+    first = nullptr;
+    last = nullptr;
     Node * temp = other.first;
     while (temp != nullptr) {
-	copy.insert(temp->data);
+	this->insert(temp->data);
 	temp = temp->next;
     }
 }
 
-void LLC::operator=(LLC other) {
-    Node * orig = other.first;
-    
-    while (orig != nullptr) {
-	insert(orig->data);
-	orig = orig->next;
-    }
-    
-    Node * prev = other.first;
-    Node * current = other.first->next;
-    while (current != nullptr) {
-	delete prev;
-	prev = current;
-	current = current->next;
-    }
-    delete prev;
+LLC& LLC::operator=(const LLC &other) {
+    this->~LLC();
+
+    first = nullptr;
+    last = nullptr;
+    this->join(other);
+
+    return *this;
 }
 
 LLC::~LLC() {
@@ -72,13 +65,19 @@ bool LLC::insert(const string & s) {
 
 void LLC::remove(const string & s) {
     Node * temp = first;
-    Node * prev;
+    Node * prev = nullptr;
     while (temp != nullptr) {
-	if (temp->data == s) {
+	if (temp->data == s && prev == nullptr) {
+	    first = temp->next;
+            prev = temp;
+	    temp = prev->next;
+	    delete prev;
+	} else if (temp->data == s) {
 	    prev->next = temp->next;
-	    delete temp;
-	    Node * temp = prev->next;
-	} else {
+    	    delete temp;
+	    temp = prev->next;	    
+	    if (temp == nullptr) last = prev;
+        } else {
 	    prev = temp;
 	    temp = temp->next;
 	}
@@ -92,29 +91,21 @@ void LLC::shuffle() {
 	first->next = last;
 	last->next = nullptr;
     } else {
-	Node * three = first->next->next;
-	Node * one = first;
-	Node * prev = nullptr;
-	Node * next = three->next;
-	first = three;
-	while (three != nullptr) {
-	    three = one;
-	    one = three->next->next;
-	    one->next = three;
-	    three->next = next;
-	    prev->next = one;
-
-	    Node * three = three->next;
-	    Node * prev = one;
-	    Node * one = one->next;
-	    Node * next = three->next;
+	Node * prev = first;
+	Node * curr = first->next;
+	string s;
+	while (curr != nullptr) {
+	    s = curr->data;
+	    curr->data = prev->data;
+	    prev->data = s;
+	    prev = curr;
+	    curr = prev->next;
 	}
-	last = one->next;
     }
 }
 
-LLC LLC::operator+(LLC other) {
-    LLC ret = other;
+LLC LLC::operator+(const LLC &other) {
+    LLC ret = *this;
     ret.join(other);
     return ret;
 }
@@ -144,7 +135,7 @@ ostream& operator << (ostream & out, const LLC& llc) {
 	out << ", " << temp->data;
 	temp = temp->next;
     }
-    out << "]" << endl;
+    out << "]";
 
     return out;
 }
@@ -170,55 +161,10 @@ int LLC::len() {
     return i;
 }
 
-void LLC::join(LLC &other) {
+void LLC::join(const LLC &other) {
     Node * temp = other.first;
     while (temp != nullptr) {
 	insert(temp->data);
 	temp = temp->next;
     }
-}
-
-int main() {
-    LLC good;
-    good.insert("hi");
-    good.head(1);
-    good.tail();
-    good.insert("guy");
-    good.head(2);
-    good.tail();
-    good.insert("you");
-    good.head(3);
-    good.tail();
-    good.insert("look");
-    good.head(4);
-    good.tail();
-    good.insert("fly");
-    good.head(7);
-    good.tail();
-
-    LLC great;
-    great.insert("but");
-    great.head(1);
-    great.tail();
-    great.insert("you're");
-    great.head(2);
-    great.tail();
-    great.insert("a");
-    great.head(3);
-    great.tail();
-    great.insert("spy");
-    great.head(4);
-    great.tail();
-    great.insert("!");
-    great.head(7);
-    great.tail();
-
-    good.join(great);
-    good.head(20);
-    great.head(20);
-
-    LLC awesome = good;
-    awesome.head(20);
-    good.head(20);
-    great.head(20);
 }
