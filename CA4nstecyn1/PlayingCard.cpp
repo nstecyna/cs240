@@ -16,7 +16,7 @@ PlayingCard::PlayingCard(int v, string s) {
 
 ostream& operator << (ostream & out, const PlayingCard& pc) {
 	string v = "";
-	
+
 	if (pc.value > 13) v = "A";
 	else if (pc.value > 12) v = "K";
 	else if (pc.value > 11) v = "Q";
@@ -25,7 +25,7 @@ ostream& operator << (ostream & out, const PlayingCard& pc) {
 
 	out << v << pc.suit;
 
-    	return out;
+  return out;
 }
 
 bool PlayingCard::operator==(const PlayingCard& pc) {
