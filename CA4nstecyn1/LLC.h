@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -31,12 +32,14 @@ template <class T> class LLC {
   	void operator+=(int n);
   	int len();
   	void join(const LLC<T> &other);
+    T takeFirstElement();
 };
 
 template <class T>
 LLC<T>::LLC() {
     first = nullptr;
     last = nullptr;
+    srand(time(0));
 }
 
 template <class T>
@@ -69,7 +72,6 @@ LLC<T>::~LLC() {
 	delete temp;
 	temp = first;
     }
-    
 }
 
 template <class T>
@@ -124,15 +126,10 @@ void LLC<T>::remove(const T & s) {
 
 template <class T>
 void LLC<T>::shuffle() {
-    if (first->next->next == nullptr) {
-	last = first;
-	first = last->next;
-	first->next = last;
-	last->next = nullptr;
-    } else {
+  T s;
 	Node * prev = first;
 	Node * curr = first->next;
-	T s;
+  for (int i = 0; i < rand() % 20; i++) {
 	while (curr != nullptr) {
 	    s = curr->data;
 	    curr->data = prev->data;
@@ -189,8 +186,8 @@ ostream& operator << (ostream & out, const LLC<U>& llc) {
 template <class T>
 void LLC<T>::operator+=(int n) {
     Node * temp = first;
+    n = n % len();
     for (int i = 0; i < n; i++) {
-	if (temp->next->next == nullptr) break;
   	temp = temp->next;
   }
   last->next = first;
@@ -216,4 +213,13 @@ void LLC<T>::join(const LLC<T> &other) {
 	insert(temp->data);
 	temp = temp->next;
     }
+}
+
+template <class T>
+T LLC<T>::takeFirstElement() {
+    T data = first->data;
+    Node * temp = first;
+    first = first->next;
+    delete temp;
+    return data;
 }
