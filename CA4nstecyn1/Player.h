@@ -9,9 +9,10 @@ class Player {
 	public:
 	  string name;
 	  int wins;
-	  LLC<PlayingCard> card;
+	  LLC<PlayingCard> cards;
 
 		Player();
 		Player(string n);
 		friend ostream& operator << (ostream & out, const Player& p);
+		void setName(string n);
 };

@@ -4,34 +4,34 @@
 using namespace std;
 
 template <class T> class LLC {
-    public:
+  public:
 
-	class Node {
-    	    public:
-        	T data;
-        	Node * next;
-        }; 
+  	class Node {
+      public:
+    	T data;
+    	Node * next;
+    };
 
-        Node * first;
-        Node * last;
+    Node * first;
+    Node * last;
 
-        LLC();
-        LLC(const LLC<T>& other);
-        LLC<T>& operator=(const LLC<T> &other);
-        ~LLC();
-        bool contains(const T & s);
-        bool insert(const T & s);
-	void remove(const T & s);
-	void shuffle();
-	LLC<T> operator+(const LLC<T> &other);
-	void head(int n);
-	T tail();
-	template <class U>
-	friend ostream& operator << (ostream & out, const LLC<U>& llc);
-	void operator+=(int n);
-	int len();
-	void join(const LLC<T> &other);
-}; 
+    LLC();
+    LLC(const LLC<T>& other);
+    LLC<T>& operator=(const LLC<T> &other);
+    ~LLC();
+    bool contains(const T & s);
+    bool insert(const T & s);
+  	void remove(const T & s);
+  	void shuffle();
+  	LLC<T> operator+(const LLC<T> &other);
+  	void head(int n);
+  	T tail();
+  	template <class U>
+  	friend ostream& operator << (ostream & out, const LLC<U>& llc);
+  	void operator+=(int n);
+  	int len();
+  	void join(const LLC<T> &other);
+};
 
 template <class T>
 LLC<T>::LLC() {
@@ -90,12 +90,15 @@ bool LLC<T>::insert(const T & s) {
     temp->next = nullptr;
 
     if (first == nullptr) {
-	first = temp;
-	last = temp;
+    	first = temp;
+    	last = temp;
+      return true;
     } else {
-	last->next = temp;
-	last = temp;
+    	last->next = temp;
+    	last = temp;
+      return true;
     }
+    return false;
 }
 
 template <class T>
@@ -111,7 +114,7 @@ void LLC<T>::remove(const T & s) {
 	} else if (temp->data == s) {
 	    prev->next = temp->next;
     	    delete temp;
-	    temp = prev->next;	    
+	    temp = prev->next;
 	    if (temp == nullptr) last = prev;
         } else {
 	    prev = temp;
@@ -154,9 +157,9 @@ void LLC<T>::head(int n) {
     int i = 0;
     cout << "[" << first->data;
     while (temp != nullptr and i < n) {
-	cout << ", " << temp->data;
-	temp = temp->next;
-	i++;
+    	cout << ", " << temp->data;
+    	temp = temp->next;
+    	i++;
     }
     cout << "]" << endl;
 }
@@ -173,8 +176,8 @@ ostream& operator << (ostream & out, const LLC<U>& llc) {
     int i = 0;
     out << "[" << llc.first->data;
     while (temp != nullptr) {
-	out << ", " << temp->data;
-	temp = temp->next;
+    	out << ", " << temp->data;
+    	temp = temp->next;
     }
     out << "]";
 
@@ -186,11 +189,11 @@ void LLC<T>::operator+=(int n) {
     Node * temp = first;
     for (int i = 0; i < n; i++) {
 	if (temp->next->next == nullptr) break;
-	temp = temp->next;
-    }
-    last->next = first;
-    first = temp->next;
-    temp->next = nullptr;
+  	temp = temp->next;
+  }
+  last->next = first;
+  first = temp->next;
+  temp->next = nullptr;
 }
 
 template <class T>
@@ -212,5 +215,3 @@ void LLC<T>::join(const LLC<T> &other) {
 	temp = temp->next;
     }
 }
-
-

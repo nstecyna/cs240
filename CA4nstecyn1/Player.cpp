@@ -1,7 +1,6 @@
 #include <iostream>
-#include <stclib.h>
-#include "LLC.h"
-#include "PlayingCard.h"
+#include <stdlib.h>
+#include "Player.h"
 
 using namespace std;
 
@@ -16,6 +15,10 @@ Player::Player(string n) {
 }
 
 ostream& operator << (ostream & out, const Player& p) {
-	out << name;
+	out << p.name;
   return out;
+}
+
+void Player::setName(string n) {
+	name = n;
 }
