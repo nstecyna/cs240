@@ -5,8 +5,8 @@
 using namespace std;
 
 PlayingCard::PlayingCard() {
-	value = 0;
-	suit = "";
+	value = 14;
+	suit = "S";
 }
 
 PlayingCard::PlayingCard(int v, string s) {

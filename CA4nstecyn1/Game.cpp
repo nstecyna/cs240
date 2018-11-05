@@ -19,10 +19,8 @@ Game::Game(string n1, string n2) {
 void Game::setDeck() {
 	string suits[4] = {"S", "H", "C", "D"};
 	for (int i = 0; i < 4; i++) {
-		cout << i;
 		for (int j = 14; j > 1; j--) {
-			cout << cards.insert(PlayingCard(j, suits[i]));
-			cout << j;
+			cards.insert(PlayingCard(j, suits[i]));
 		}
 	}
 }

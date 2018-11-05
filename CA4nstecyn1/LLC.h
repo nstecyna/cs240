@@ -66,11 +66,13 @@ LLC<T>::~LLC() {
     Node * prev = first;
     Node * current = first->next;
     while (current != nullptr) {
-	delete prev;
-	prev = current;
-	current = current->next;
+    	delete prev;
+    	prev = current;
+    	current = current->next;
     }
     delete prev;
+    first = nullptr;
+    last = nullptr;
 }
 
 template <class T>
@@ -172,14 +174,17 @@ T LLC<T>::tail() {
 
 template <class U>
 ostream& operator << (ostream & out, const LLC<U>& llc) {
-    typename LLC<U>::Node * temp = llc.first->next;
-    int i = 0;
-    out << "[" << llc.first->data;
-    while (temp != nullptr) {
-    	out << ", " << temp->data;
-    	temp = temp->next;
+    if (llc.first == nullptr) {
+      out << "[NULL]";
+    } else {
+      typename LLC<U>::Node * temp = llc.first->next;
+      out << "[" << llc.first->data;
+      while (temp != nullptr) {
+      	out << ", " << temp->data;
+      	temp = temp->next;
+      }
+      out << "]";
     }
-    out << "]";
 
     return out;
 }

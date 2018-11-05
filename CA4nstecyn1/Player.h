@@ -9,7 +9,7 @@ class Player {
 	public:
 	  string name;
 	  int wins;
-	  LLC<PlayingCard> cards;
+	  LLC<PlayingCard>* cards;
 
 		Player();
 		Player(string n);

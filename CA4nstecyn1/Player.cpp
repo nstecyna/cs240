@@ -7,11 +7,13 @@ using namespace std;
 Player::Player() {
 	name = "";
 	wins = 0;
+	cards = new LLC<PlayingCard>();
 }
 
 Player::Player(string n) {
 	name = n;
 	wins = 0;
+	cards = new LLC<PlayingCard>();
 }
 
 ostream& operator << (ostream & out, const Player& p) {
