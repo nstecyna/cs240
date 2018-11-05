@@ -9,7 +9,7 @@ int main() {
 	cout << p1;
 
 	Game g1("hey", "fellas");
-	cout << endl << g1.cards << endl;
+	cout << endl << *g1.cards << endl;
 	cout << g1.p1 << endl;
 	cout << *g1.p1.cards << endl;
 	cout << g1.p2 << endl;

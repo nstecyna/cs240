@@ -16,11 +16,15 @@ Game::Game(string n1, string n2) {
 	setDeck();
 }
 
+Game::~Game() {
+	delete cards;
+}
+
 void Game::setDeck() {
 	string suits[4] = {"S", "H", "C", "D"};
 	for (int i = 0; i < 4; i++) {
 		for (int j = 14; j > 1; j--) {
-			cards.insert(PlayingCard(j, suits[i]));
+			cards->insert(PlayingCard(j, suits[i]));
 		}
 	}
 }

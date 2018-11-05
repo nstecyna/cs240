@@ -16,6 +16,10 @@ Player::Player(string n) {
 	cards = new LLC<PlayingCard>();
 }
 
+Player::~Player() {
+	delete cards;
+}
+
 ostream& operator << (ostream & out, const Player& p) {
 	out << p.name;
   return out;

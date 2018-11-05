@@ -63,16 +63,13 @@ LLC<T>& LLC<T>::operator=(const LLC<T> &other) {
 
 template <class T>
 LLC<T>::~LLC() {
-    Node * prev = first;
-    Node * current = first->next;
-    while (current != nullptr) {
-    	delete prev;
-    	prev = current;
-    	current = current->next;
+    Node * temp  = first;
+    while (temp != nullptr) {
+	first = temp->next;
+	delete temp;
+	temp = first;
     }
-    delete prev;
-    first = nullptr;
-    last = nullptr;
+    
 }
 
 template <class T>

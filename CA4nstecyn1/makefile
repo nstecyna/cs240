@@ -5,7 +5,7 @@ all:	LLC
 # Specify the object files that the target depends on
 # Also specify the object files needed to create the executable
 LLC:	LLC.h PlayingCard.o Player.o Game.o Main.o
-	g++  PlayingCard.o Player.o Game.o Main.o -o war.exe
+	g++ -g -Wall -Wextra -pedantic PlayingCard.o Player.o Game.o Main.o -o war.exe
 
 # Specify how the object files should be created from source files
 #LLC.o:	LLC.cpp LLC.h

@@ -13,6 +13,7 @@ class Player {
 
 		Player();
 		Player(string n);
+		~Player();
 		friend ostream& operator << (ostream & out, const Player& p);
 		void setName(string n);
 };
