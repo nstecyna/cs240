@@ -26,4 +26,4 @@ Main.o:	Main.cpp LLC.h
 # Specify the object files and executables that are generated
 # and need to be removed to re-compile the whole thing
 clean:
-	rm -f *.o LLC
+	rm -f *.o war.exe
