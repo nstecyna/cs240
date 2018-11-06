@@ -6,13 +6,15 @@ using namespace std;
 
 Player::Player() {
 	name = "";
-	wins = 0;
+	bWins = 0;
+	wWins = 0;
 	cards = new LLC<PlayingCard>();
 }
 
 Player::Player(string n) {
 	name = n;
-	wins = 0;
+	bWins = 0;
+	wWins = 0;
 	cards = new LLC<PlayingCard>();
 }
 

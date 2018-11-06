@@ -1,4 +1,3 @@
-#include <iostream>
 #include <stdlib.h>
 #include "Game.h"
 
@@ -22,16 +21,33 @@ Game::~Game() {
 	delete cards;
 }
 
-void Game::play(){
+Player Game::play(ofstream *file) {
+	*file << p1 << " VS. " << p2 << endl;
 	cards->shuffle();
 	dealCards();
 }
 
-void Game::battle(){
-
+void Game::battle(ofstream *file) {
+	cards->insert(p1.cards->takeFirstElement());
+	cards->insert(p2.cards->takeFirstElement());
+	
+	if (cards->first > cards->last) {
+		*file << p1 << " " << cards->first << " DEFEATED " << p2 << " " << cards->last;
+		p1.bWins++;
+		p1.cards->insert(cards->takeFirstElement());
+		p1.cards->insert(cards->takeFirstElement());
+	} else if (cards->first == cards->last) {
+		*file << p1 << " " << cards->first << " TIED " << p2 << " " << cards->last;
+                war(file); 
+	} else {
+		*file << p2 << " " << cards->first << " DEFEATED " << p1 << " " << cards->last;
+		p2.bWins++;
+		p2.cards->insert(cards->takeFirstElement());
+		p2.cards->insert(cards->takeFirstElement());
+	}
 }
 
-void Game::war(){
+void Game::war(ofstream *file) {
 
 }
 
@@ -46,9 +62,9 @@ void Game::setDeck() {
 
 void Game::dealCards() {
 	for (int i = 0; i < 26; i++) {
-    p1.cards->insert(cards->takeFirstElement());
+    		p1.cards->insert(cards->takeFirstElement());
   }
-  for (int i = 26; i < 52; i++) {
-  	p2.cards->insert(cards->takeFirstElement());
+  	for (int i = 26; i < 52; i++) {
+  		p2.cards->insert(cards->takeFirstElement());
   }
 }

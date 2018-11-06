@@ -10,7 +10,7 @@ class PlayingCard {
 
 		PlayingCard();
 		PlayingCard(int v, string s);
-		friend ostream& operator << (ostream & out, const PlayingCard& pc);
+		friend ofstream& operator << (ofstream & out, const PlayingCard& pc);
 		bool operator==(const PlayingCard& pc);
 		bool operator>(const PlayingCard& pc);
 };

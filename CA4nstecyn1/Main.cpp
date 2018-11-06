@@ -1,17 +1,43 @@
 #include <iostream>
 #include <stdlib.h>
+#include <vector>
+#include <algorithm>
 #include "Game.h"
 
 using namespace std;
 
-int main() {
-	Player p1("cool guy");
-	cout << p1;
+int main(int argc, char** argv) {
+	if (argc < 3) {
+		cout << "Please enter a valid number of arguments." << endl;
+		return 1;
+	}
 
-	Game g1("hey", "fellas");
-	cout << endl << *g1.cards << endl;
-	cout << g1.p1 << endl;
-	cout << *g1.p1.cards << endl;
-	cout << g1.p2 << endl;
-	cout << *g1.p2.cards << endl;
+	gameData* data = new gameData();
+	vector<Player*> *players = new vector<Player*>();
+	auto list = *players;
+	ifstream reader;
+	ofstream writer;	
+	writer.open(argv[2]);
+	reader.open(argv[1]);
+	reader >> noskipws;
+
+	string line;
+	Player * temp;
+	int size;
+	while (getline(reader, line)) {
+		if (line.length() > 1) {
+			temp = new Player(line);
+			players->push_back(temp);
+		}
+	}
+	{
+		unsigned int i = 1;
+		size = players->size();
+		while (i < size) i *= 2;
+
+		if (i != size) {
+			cout << "Number of players is not a power of two." << endl;
+		return 1;
+		}
+	}
 }

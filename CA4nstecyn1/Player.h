@@ -8,7 +8,8 @@ using namespace std;
 class Player {
 	public:
 	  string name;
-	  int wins;
+	  int bWins;
+	  int wWins;
 	  LLC<PlayingCard>* cards;
 
 		Player();
