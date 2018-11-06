@@ -6,32 +6,28 @@ using namespace std;
 
 PlayingCard::PlayingCard() {
 	value = 14;
-	suit = "S";
+	name = "AS";
 }
 
 PlayingCard::PlayingCard(int v, string s) {
 	value = v;
-	suit = s;
+
+	if (v > 13) name = "A";
+	else if (v > 12) name = "K";
+	else if (v > 11) name = "Q";
+	else if (v > 10) name = "J";
+	else name = to_string(v);
+
+	name += s;
 }
 
 PlayingCard::~PlayingCard() {
-	
+
 }
 
 
 ostream& operator << (ostream & out, const PlayingCard& pc) {
-	string v = "";
-
-	if (pc.value > 13) v = "A";
-	else if (pc.value > 12) v = "K";
-	else if (pc.value > 11) v = "Q";
-	else if (pc.value > 10) v = "J";
-	else v = to_string(pc.value);
-
-	out << v << pc.suit;
-
-  return out;
-}
+	}
 
 bool PlayingCard::operator==(const PlayingCard& pc) {
 	if (value == pc.value) return true;

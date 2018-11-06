@@ -6,12 +6,11 @@ using namespace std;
 class PlayingCard {
 	public:
 		int value;
-		string suit;
+		string name;
 
 		PlayingCard();
 		~PlayingCard();
 		PlayingCard(int v, string s);
-		friend ofstream& operator << (ofstream & out, const PlayingCard& pc);
 		bool operator==(const PlayingCard& pc);
 		bool operator>(const PlayingCard& pc);
 };
