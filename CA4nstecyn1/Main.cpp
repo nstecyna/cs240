@@ -6,12 +6,16 @@
 
 using namespace std;
 
+Game *game = new Game();
+
+vector<Player*> tournament(vector<Player*> &players, ofstream &out, GameData &data);
+
 int main(int argc, char** argv) {
 	if (argc < 3) {
 		cout << "Please enter a valid number of arguments." << endl;
 		return 1;
 	}
-
+	
 	GameData data;
 	vector<Player*> players;
 	ifstream reader;
@@ -38,10 +42,39 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	for (int i = 0; i < players.size(); ++i) {
-		delete players[i];
-	}
+	vector<Player*> winnerVector = tournament(players, writer, data);
+	Player *winner = (winnerVector)[0]; 
+	writer << "Winner: " << *winner << ". Average number of battles in the tournament: " << (data.totalBattles/(size-1)) << " The greatest number of battles in a single tournament was " << data.topBattles << endl;
+
+	delete winner;
+	delete game;
 
 	writer.close();
 	reader.close();
 }
+
+vector<Player*> tournament(vector<Player*> &players, ofstream &out, GameData &data){
+	vector<Player*> roundWinners;
+	for (unsigned int i = 0; i < players.size() - 1; i += 2) {
+		out << "===" << endl;
+
+		Player* winner = game->play(players[i], players[i+1], &out, data);
+
+		if (winner == players[i])
+			delete players[i+1];
+		else
+			delete players[i];
+
+		winner->cards->empty();
+		winner->gWins = 0;
+		winner->bWins = 0;
+		winner->wWins = 0;
+		roundWinners.push_back(winner);
+	}
+
+	if (roundWinners.size() == 1)
+		return roundWinners;
+
+	return tournament(roundWinners, out, data);
+}
+
