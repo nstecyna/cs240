@@ -12,11 +12,10 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	gameData* data = new gameData();
-	vector<Player*> *players = new vector<Player*>();
-	auto list = *players;
+	GameData data;
+	vector<Player*> players;
 	ifstream reader;
-	ofstream writer;	
+	ofstream writer;
 	writer.open(argv[2]);
 	reader.open(argv[1]);
 	reader >> noskipws;
@@ -27,17 +26,22 @@ int main(int argc, char** argv) {
 	while (getline(reader, line)) {
 		if (line.length() > 1) {
 			temp = new Player(line);
-			players->push_back(temp);
+			players.push_back(temp);
 		}
 	}
-	{
-		unsigned int i = 1;
-		size = players->size();
-		while (i < size) i *= 2;
+	unsigned int iter= 1;
+	size = players.size();
+	while (iter < size) iter *= 2;
 
-		if (i != size) {
-			cout << "Number of players is not a power of two." << endl;
+	if (iter != size) {
+		cout << "Number of players is not a power of two." << endl;
 		return 1;
-		}
 	}
+
+	for (int i = 0; i < players.size(); ++i) {
+		delete players[i];
+	}
+
+	writer.close();
+	reader.close();
 }

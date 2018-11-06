@@ -6,27 +6,28 @@
 
 using namespace std;
 
-class gameData{
+class GameData{
 	public:
-		int totalbattles = 0;
-		int topBattles = 0;
+		int totalBattles;
+		int topBattles;
+		GameData() {
+			totalBattles = 0;
+			topBattles = 0;
+		}
 };
 
 class Game {
 	public:
-	  Player p1;
-	  Player p2;
-	  LLC<PlayingCard>* cards;
+      		LLC<PlayingCard>* cards;
 
-	  Game();
-	  Game(string n1, string n2);
-	  ~Game();
-
-		Player play(ofstream *file);
-		void battle(ofstream *file);
-		void war(ofstream *file);
+		Game();
+		Game(string n1, string n2);
+		~Game();
+		Player* play(Player *p1, Player *p2, ofstream *file, GameData &data);
+		void battle(Player *p1, Player *p2, ofstream *file);
+		void war(Player *p1, Player *p2, ofstream *file);
 
 	private:
 		void setDeck();
-		void dealCards();
+		void dealCards(Player *p1, Player *p2);
 };

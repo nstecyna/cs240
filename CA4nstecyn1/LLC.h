@@ -5,34 +5,35 @@
 using namespace std;
 
 template <class T> class LLC {
-  public:
+	public:
 
-  	class Node {
-      public:
-    	T data;
-    	Node * next;
-    };
+		class Node {
+			public:
+				T data;
+				Node * next;
+		};
 
-    Node * first;
-    Node * last;
+		Node * first;
+		Node * last;
 
-    LLC();
-    LLC(const LLC<T>& other);
-    LLC<T>& operator=(const LLC<T> &other);
-    ~LLC();
-    bool contains(const T & s);
-    bool insert(const T & s);
-  	void remove(const T & s);
-  	void shuffle();
-  	LLC<T> operator+(const LLC<T> &other);
-  	void head(int n);
-  	T tail();
-  	template <class U>
-  	friend ostream& operator << (ostream & out, const LLC<U>& llc);
-  	void operator+=(int n);
-  	int len();
-  	void join(const LLC<T> &other);
-    T takeFirstElement();
+		LLC();
+		LLC(const LLC<T>& other);
+		LLC<T>& operator=(const LLC<T> &other);
+		~LLC();
+		bool contains(const T & s);
+		bool insert(const T & s);
+ 		void remove(const T & s);
+		void shuffle();
+		LLC<T> operator+(const LLC<T> &other);
+		void head(int n);
+		T tail();
+		template <class U>
+		friend ostream& operator << (ostream & out, const LLC<U>& llc);
+		void operator+=(int n);
+		int len();
+		void join(const LLC<T> &other);
+		T takeFirstElement();
+		void empty();
 };
 
 template <class T>
@@ -222,4 +223,15 @@ T LLC<T>::takeFirstElement() {
     first = first->next;
     delete temp;
     return data;
+}
+
+template <class T>
+void LLC<T>::empty() {
+	Node * temp;
+	while (temp != nullptr) {
+		temp = first->next;
+		delete first;
+		first = temp;
+	}
+	last = nullptr;
 }

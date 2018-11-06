@@ -7,10 +7,12 @@ using namespace std;
 
 class Player {
 	public:
-	  string name;
-	  int bWins;
-	  int wWins;
-	  LLC<PlayingCard>* cards;
+		string name;
+		int gWins;
+		int bWins;
+		int wWins;
+		int handsPlayed;
+		LLC<PlayingCard>* cards;
 
 		Player();
 		Player(string n);

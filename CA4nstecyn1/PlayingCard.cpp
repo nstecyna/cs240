@@ -14,6 +14,11 @@ PlayingCard::PlayingCard(int v, string s) {
 	suit = s;
 }
 
+PlayingCard::~PlayingCard() {
+	
+}
+
+
 ostream& operator << (ostream & out, const PlayingCard& pc) {
 	string v = "";
 
