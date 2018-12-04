@@ -15,5 +15,7 @@ class Flight{
 
 		Flight();
 		~Flight();
+		Flight(string depC, string desC);
+		Flight(string depC, string desC);
 		Flight(string depC, string desC, string depT, string arrT, string c);
 };
