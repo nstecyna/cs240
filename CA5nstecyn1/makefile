@@ -10,10 +10,10 @@ FDS:	Flight.o Main.o
 # Specify how the object files should be created from source files
 
 Flight.o:	Flight.cpp Flight.h
-	g++ -c Flight.cpp -o Flight.o
+	g++ -g -c Flight.cpp -o Flight.o
 
 Main.o:	Main.cpp Flight.h
-	g++ -c Main.cpp -o Main.o
+	g++ -g -c Main.cpp -o Main.o
 
 # Specify the object files and executables that are generated
 # and need to be removed to re-compile the whole thing

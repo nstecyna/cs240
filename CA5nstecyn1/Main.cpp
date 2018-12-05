@@ -12,7 +12,9 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	vector<Flight>* flights;
+	int choice = 3;
+	
+	vector<Flight> flights;
 
 	ifstream reader;
 	reader.open(argv[1]);
@@ -23,7 +25,6 @@ int main(int argc, char** argv) {
 	string arrTime;
 	string cost;
 
-	vector<Flight>::iterator i = flights->begin();
 	while (reader.good()) {
 		reader >> depCity;
 		reader >> desCity;
@@ -31,21 +32,32 @@ int main(int argc, char** argv) {
 		reader >> arrTime;
 		reader >> cost;
 		
-		flights->push_back(Flight(depCity, desCity, depTime, arrTime, cost));
+		if (choice == 1)
+			flights.push_back(Flight(depCity, desCity));
+		if (choice == 2)
+			flights.push_back(Flight(depCity, desCity, depTime, arrTime));
+		if (choice == 3)
+			flights.push_back(Flight(depCity, desCity, depTime, arrTime, cost));
 
-		cout << i->depCity << endl;
-		cout << i->desCity << endl;
-		cout << i->depTime << endl;
-		cout << i->arrTime << endl;
-		cout << i->cost << endl;
-		cout << endl;
-
-		++i;
 	}
 	reader.close();
-
 	
+	flights.pop_back();
+
+	for (auto i = flights.begin(); i != flights.end(); ++i) {
+		cout << i->depCity << endl;
+		cout << i->desCity << endl;
+		if (choice == 2 or choice == 3) {
+			cout << i->depTime << endl;
+			cout << i->arrTime << endl;
+		}
+		if (choice == 3)
+		cout << i->cost << endl;
+		cout << endl;
+	}
 }
+
+/*
 
 void setReturnFlights(string tripDepCity, int earliestDep, int earliestRet, vector<Flight>& flights) {
 	
@@ -61,3 +73,4 @@ void setReturnFlights(string tripDepCity, int earliestDep, int earliestRet, vect
 		}
 	}
 }
+*/

@@ -14,6 +14,7 @@ Flight::Flight() {
 }
 
 Flight::~Flight() {
+	returnFlights->clear();
 	delete returnFlights;
 }
 
@@ -33,27 +34,32 @@ Flight::Flight(string depC, string desC, string depT, string arrT) {
 	returnFlights = new vector<Flight>;
 
 	// departure time
-	int colon = 2;
-	if (depT[1] == ':')
-		colon = 1;
+	bool zeroInHour = false;
+	if (depT[0] == '0')
+		zeroInHour = true;
 
-	depTime = 60 * atoi(depT.substr(0,colon).c_str());
-	depTime += atoi(depT.substr(colon+1, 2).c_str());
+	if (zeroInHour)
+		depTime = 60 * atoi(depT.substr(1, 1).c_str());
+	else
+		depTime = 60 * atoi(depT.substr(0, 2).c_str());
+	depTime += atoi(depT.substr(4, 2).c_str());
 	
-	if (depT[colon + 3] == 'p')
-		depTime = 0;
+	if (depT[6] == 'p')
+		depTime += 720;
 
 	// arrival time
-	if (arrT[1] == ':')
-		colon = 1;
-	else
-		colon = 2;
+	if (arrT[0] != '0')
+		zeroInHour = false;
 
-	arrTime = 60 * atoi(arrT.substr(0,colon).c_str());
-	arrTime += atoi(arrT.substr(colon+1, 2).c_str());
+	if (zeroInHour)
+		arrTime = 60 * atoi(arrT.substr(1, 1).c_str());
+	else
+		arrTime = 60 * atoi(arrT.substr(0, 2).c_str());
+	arrTime += atoi(arrT.substr(4, 2).c_str());
 	
-	if (arrT[colon + 3] == 'p')
+	if (arrT[6] == 'p')
 		arrTime += 720;
+
 }
 
 Flight::Flight(string depC, string desC, string depT, string arrT, string c) {
@@ -63,25 +69,43 @@ Flight::Flight(string depC, string desC, string depT, string arrT, string c) {
 	returnFlights = new vector<Flight>;
 
 	// departure time
-	int colon = 2;
-	if (depT[1] == ':')
-		colon = 1;
+	bool zeroInHour = false;
+	if (depT[0] == '0')
+		zeroInHour = true;
 
-	depTime = 60 * atoi(depT.substr(0,colon).c_str());
-	depTime += atoi(depT.substr(colon+1, 2).c_str());
+	if (zeroInHour)
+		depTime = 60 * atoi(depT.substr(1, 1).c_str());
+	else
+		depTime = 60 * atoi(depT.substr(0, 2).c_str());
+	depTime += atoi(depT.substr(4, 2).c_str());
 	
-	if (depT[colon + 3] == 'p')
-		depTime = 0;
+	if (depT[5] == 'p')
+		depTime += 720;
 
 	// arrival time
-	if (arrT[1] == ':')
-		colon = 1;
-	else
-		colon = 2;
+	if (arrT[0] != '0')
+		zeroInHour = false;
 
-	arrTime = 60 * atoi(arrT.substr(0,colon).c_str());
-	arrTime += atoi(arrT.substr(colon+1, 2).c_str());
+	if (zeroInHour)
+		arrTime = 60 * atoi(arrT.substr(1, 1).c_str());
+	else
+		arrTime = 60 * atoi(arrT.substr(0, 2).c_str());
+	arrTime += atoi(arrT.substr(4, 2).c_str());
 	
-	if (arrT[colon + 3] == 'p')
+	if (arrT[5] == 'p')
 		arrTime += 720;
+
+}
+
+Flight::Flight(const Flight &f) {
+	depCity = f.depCity;
+	desCity = f.desCity;
+	depTime = f.depTime;
+	arrTime = f.arrTime;
+	cost = f.cost;
+	returnFlights = new vector<Flight>;
+
+	for (auto i = f.returnFlights->begin(); i != f.returnFlights->end(); ++i) {
+		returnFlights->push_back(*i);
+	}
 }
