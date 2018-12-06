@@ -9,8 +9,7 @@
 
 using namespace std;
 
-void AnyItinerary(unordered_map<string ,City*> cities, string departCity, string arriveCity, int departTime) {
-	queue<City*> path;
+void AnyItinerary(unordered_map<string ,City*> cities, string departCity, string arriveCity, int departTime, queue<City*> path) {;
 	path.push(cities[departCity]);
 
 	City *current;
@@ -19,8 +18,8 @@ void AnyItinerary(unordered_map<string ,City*> cities, string departCity, string
 		path.pop();
 		for (auto i = current->flightsOut.begin(); i != current->flightsOut.end(); ++i) {
 
-			if (!(*i)->destCity->discovered && (*i)->depTime >= departTime) {
-				(*i)->destCity->discovered = true;
+			if (!(*i)->destCity->discovered < 1 && (*i)->depTime >= departTime) {
+				(*i)->destCity->discovered = 1;
 
 				(*i)->destCity->prevCity = current;
 				(*i)->destCity->prevFlight = *i;
@@ -45,15 +44,16 @@ void AnyItinerary(unordered_map<string ,City*> cities, string departCity, string
 		backPath.push(backwardsCity);
 		backwardsCity = backwardsCity->prevCity;
 	}
-	
+
 	if (backPath.size() < 2) {
 		cout << "The destination city could not be reached. " << endl;
 	} else {
 		cout << "Itinerary for flight from "<< departCity << " to " << arriveCity << ":" << endl;
+		cout << "Final arrival time: " << cities[arriveCity]->arrival <<  " Total cost: $" << cities[arriveCity]->weight << endl << endl;
 		while (!backPath.empty()) {
 			City *temp = backPath.top();
 			if (temp->prevCity != NULL) {
-			cout << temp->prevFlight->depCityN << " " << temp->prevFlight->destCityN << " " << temp->prevFlight->getDepTime() << " " << temp->prevFlight->getArrTime() << " $" << temp->prevFlight->cost << endl;
+				cout << temp->prevFlight->depCityN << " " << temp->prevFlight->destCityN << " " << temp->prevFlight->getDepTime() << " " << temp->prevFlight->getArrTime() << " $" << temp->prevFlight->cost << endl;
 			}
 			backPath.pop();
 		}
@@ -61,13 +61,60 @@ void AnyItinerary(unordered_map<string ,City*> cities, string departCity, string
 }
 
 
-void EarliestArrival(unordered_map<string ,City*> cities, string departCity, string arriveCity, int departTime, int arriveTime) {
-	// TODO
+void EarliestArrival(unordered_map<string ,City*> cities, string departCity, string arriveCity, int departTime, queue<City*> path) {
+	path.push(cities[departCity]);
+
+	City *current;
+	while (!path.empty()) {
+		current = path.front();
+		current->discovered = 2;
+		path.pop();
+		for (auto i = current->flightsOut.begin(); i != current->flightsOut.end(); ++i) {
+
+			if (!(*i)->destCity->discovered < 2 && (*i)->depTime >= departTime &&(*i)->depTime >= current->arrival) {
+				if (!(*i)->destCity->discovered < 1) { 
+					(*i)->destCity->arrival = (*i)->arrTime;
+					(*i)->destCity->discovered = 1;
+
+					(*i)->destCity->prevCity = current;
+					(*i)->destCity->prevFlight = *i;
+
+					path.push((*i)->destCity);
+				} else if ((*i)->destCity->arrival > (*i)->arrTime) {
+					(*i)->destCity->arrival = (*i)->arrTime;
+
+					(*i)->destCity->prevCity = current;
+					(*i)->destCity->prevFlight = *i;
+
+					path.push((*i)->destCity);
+				}
+			}
+		}
+	}
+
+	stack<City*> backPath;
+	City* backwardsCity = cities[arriveCity];
+
+	while (backwardsCity != NULL){
+		backPath.push(backwardsCity);
+		backwardsCity = backwardsCity->prevCity;
+	}
+
+	if (backPath.size() < 2) {
+		cout << "The destination city could not be reached. " << endl;
+	} else {
+		cout << "Itinerary for flight from "<< departCity << " to " << arriveCity << ":" << endl;
+		cout << "Final arrival time: " << cities[arriveCity]->arrival <<  " Total cost: $" << cities[arriveCity]->weight << endl << endl;
+		while (!backPath.empty()) {
+			City *temp = backPath.top();
+			if (temp->prevCity != NULL) {
+				cout << temp->prevFlight->depCityN << " " << temp->prevFlight->destCityN << " " << temp->prevFlight->getDepTime() << " " << temp->prevFlight->getArrTime() << " $" << temp->prevFlight->cost << endl;
+			}
+			backPath.pop();
+		}
+	}
 }
 
-void LeastExpensive(unordered_map<string ,City*> cities, string departCity, string arriveCity, int departTime, int arriveTime) {
-	// TODO
-}
 
 Flight* compare(Flight* f1, Flight* f2) {
 	if (f1->arrTime < f2->arrTime)
@@ -87,7 +134,6 @@ int main(int argc, char** argv) {
 	string departCity;
 	string arriveCity;
 	string departTimeIn;
-	string arriveTimeIn;
 
 	cout << "Enter the departure city: ";
 	cin >> departCity;
@@ -98,10 +144,6 @@ int main(int argc, char** argv) {
 	cout << "Enter the earliest acceptable departure time: ";
 	cin >> departTimeIn;
 	int departTime = newFlight->convertTimeToInt(departTimeIn);
-
-	cout << "Enter the earliest acceptable return departure time: ";
-	cin >> arriveTimeIn;
-	int arriveTime = newFlight->convertTimeToInt(arriveTimeIn);
 
 	string choose;
 	cout << endl << "Please pick an objective:" << endl;
@@ -163,22 +205,51 @@ int main(int argc, char** argv) {
 	reader.close();
 
 	// flights.pop_back();
-	
+
 	for (auto i = cities.begin(); i != cities.end(); ++i) {
 		sort(i->second->flightsOut.begin(), i->second->flightsOut.end(), compare);
 	}
+
+	queue<City*> path;
 
 	if (cities[departCity] == NULL) {
 		cout << "Invalid department city" << endl;
 	} else if (cities[arriveCity] == NULL) {
 		cout << "Invalid return department city" << endl;
 	} else {
-		if (choose == "1") {
-			AnyItinerary(cities, departCity, arriveCity, departTime);
-		} else if (choose == "2") {
-			EarliestArrival(cities, departCity, arriveCity, departTime, arriveTime);
+		if (choose == "2") {
+			EarliestArrival(cities, departCity, arriveCity, departTime, path);
+			for(auto i = cities.begin(); i != cities.end(); ++i){
+				auto var = i->second;
+				var-> discovered = 0;
+				var-> arrival = 0;
+				var-> weight = 0;
+			}		
+
+			path.push(cities[arriveCity]);
+
+			string arriveTimeIn;
+			cout << endl << endl << "Enter the earliest acceptable return departure time: ";
+			cin >> arriveTimeIn;
+			int arriveTime = newFlight->convertTimeToInt(arriveTimeIn);
+
+			EarliestArrival(cities, departCity, arriveCity, arriveTime, path);
 		} else {	
-			LeastExpensive(cities, departCity, arriveCity, departTime, arriveTime);
+			AnyItinerary(cities, departCity, arriveCity, departTime, path);
+			for(auto i = cities.begin(); i != cities.end(); ++i){
+				auto var = i->second;
+				var-> discovered = 0;
+				var-> arrival = 0;
+				var-> weight = 0;
+				var-> prevCity = nullptr;
+			}		
+
+			string arriveTimeIn;
+			cout << endl << endl << "Enter the earliest acceptable return departure time: ";
+			cin >> arriveTimeIn;
+			int arriveTime = newFlight->convertTimeToInt(arriveTimeIn);
+
+			AnyItinerary(cities, departCity, arriveCity, arriveTime, path);
 		}
 	}
 

@@ -25,7 +25,7 @@ Flight::~Flight() {
 Flight::Flight(string depCN, string destCN, string depT, string arrT, string c) {
 	depCityN = depCN;
 	destCityN = destCN;
-	cost = ::atof(c.substr(1).c_str());
+	cost = at.valueOf(c.substr(1).c_str());
 	destCity = nullptr;
 	depTime = convertTimeToInt(depT);
 	arrTime = convertTimeToInt(arrT);

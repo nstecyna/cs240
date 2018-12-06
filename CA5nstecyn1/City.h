@@ -11,9 +11,9 @@ class City {
 	public:
 		std::string name;
 		vector<Flight*> flightsOut;
-		bool discovered;
+		int discovered;
+		int arrival;
 		int weight;
-		bool explored;
 		City *prevCity;
 		Flight *prevFlight;
 
