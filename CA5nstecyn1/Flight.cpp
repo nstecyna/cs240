@@ -27,34 +27,8 @@ Flight::Flight(string depCN, string destCN, string depT, string arrT, string c) 
 	destCityN = destCN;
 	cost = ::atof(c.substr(1).c_str());
 	destCity = nullptr;
-
-	// departure time
-	bool zeroInHour = false;
-	if (depT[0] == '0')
-		zeroInHour = true;
-
-	if (zeroInHour)
-		depTime = 60 * atoi(depT.substr(1, 1).c_str());
-	else
-		depTime = 60 * atoi(depT.substr(0, 2).c_str());
-	depTime += atoi(depT.substr(4, 2).c_str());
-
-	if (depT[5] == 'p')
-		depTime += 720;
-
-	// arrival time
-	if (arrT[0] != '0')
-		zeroInHour = false;
-
-	if (zeroInHour)
-		arrTime = 60 * atoi(arrT.substr(1, 1).c_str());
-	else
-		arrTime = 60 * atoi(arrT.substr(0, 2).c_str());
-	arrTime += atoi(arrT.substr(4, 2).c_str());
-
-	if (arrT[5] == 'p')
-		arrTime += 720;
-
+	depTime = convertTimeToInt(depT);
+	arrTime = convertTimeToInt(arrT);
 }
 
 Flight::Flight(const Flight &f) {
@@ -65,3 +39,45 @@ Flight::Flight(const Flight &f) {
 	cost = f.cost;
 	destCity = f.destCity;
 }
+
+int Flight::convertTimeToInt(string time) {
+	int retInt = 0;
+	bool zeroInHour = false;
+	if (time[0] == '0')
+		zeroInHour = true;
+
+	if (zeroInHour)
+		retInt = 60 * atoi(time.substr(1, 1).c_str());
+	else
+		retInt = 60 * atoi(time.substr(0, 2).c_str());
+	retInt += atoi(time.substr(4, 2).c_str());
+
+	if (time[5] == 'p')
+		retInt += 720;
+	return retInt;
+}
+
+string Flight::convertIntToTime(int i) {
+	string timeOfDay = "am";
+	if (i - 720 > 0) {
+		timeOfDay = "pm";
+		i -= 720;
+	}
+	string hours = to_string(i / 60);
+	if (hours.length() == 1)
+		hours = "0" + hours;
+	string minutes = to_string(i % 60);
+	if (minutes.length() == 1)
+		minutes = "0" + minutes;
+
+	return hours + ":" + minutes + timeOfDay;
+}
+
+string Flight::getDepTime() {
+	return convertIntToTime(depTime);
+}
+
+string Flight::getArrTime() {
+	return convertIntToTime(arrTime);
+}
+

@@ -19,4 +19,8 @@ class Flight{
 		~Flight();
 		Flight(string depCN, string destCN, string depT, string arrT, string c);
 		Flight(const Flight &f);
+		int convertTimeToInt(string time);
+		string convertIntToTime(int i);
+		string getDepTime();
+		string getArrTime();
 };

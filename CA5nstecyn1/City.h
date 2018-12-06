@@ -14,6 +14,8 @@ class City {
 		bool discovered;
 		int weight;
 		bool explored;
+		City *prevCity;
+		Flight *prevFlight;
 
 		City();
 		~City();

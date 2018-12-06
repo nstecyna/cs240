@@ -11,6 +11,8 @@ City::City() {
 	discovered = false;
 	weight = 0;
 	explored = false;
+	prevCity = nullptr;
+	prevFlight = nullptr;
 }
 
 City::~City() {
@@ -24,13 +26,21 @@ City::~City() {
 
 City::City(std::string n) {
 	name = n;
-	int traversed;
-	int weight;
+	discovered = false;
+	weight = 0;
+	explored = false;
+	prevCity = nullptr;
+	prevFlight = nullptr;
+
 }
 
 City::City(std::string n, Flight *flight) {
 	name = n;
-	int traversed;
-	int weight;
+	discovered = false;
+	weight = 0;
+	explored = false;
 	flightsOut.push_back(flight);
+	prevCity = nullptr;
+	prevFlight = nullptr;
+
 }
