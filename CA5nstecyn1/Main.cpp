@@ -1,10 +1,23 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
-#include <vector>
-#include "Flight.h"
+#include <unordered_map>
+#include "City.h"
 
 using namespace std;
+
+void AnyItinerary(unordered_map<string ,City*> cities, string departCity, string arriveCity) {
+	cout << "TODO" << endl;
+}
+
+
+void EarliestArrival(unordered_map<string ,City*> cities, string departCity, string arriveCity, string departTime, string arriveTime) {
+	AnyItinerary(cities, departCity, arriveCity);
+}
+
+void LeastExpensive(unordered_map<string ,City*> cities, string departCity, string arriveCity, string departTime, string arriveTime) {
+	EarliestArrival(cities, departCity, arriveCity, departTime, arriveTime);
+}
 
 int main(int argc, char** argv) {
 	if (argc < 2) {
@@ -30,7 +43,7 @@ int main(int argc, char** argv) {
 	cin >> arriveTime;
 
 	string choose;
-	cout << endl << "Please pick an option:" << endl;
+	cout << endl << "Please pick an objective:" << endl;
 	cout << "Any Itinerary = type '1'" << endl;
 	cout << "Earliest Arrival = type '2'" << endl;
 	cout << "Least Expensive = type '3'" << endl;
@@ -48,62 +61,64 @@ int main(int argc, char** argv) {
 	}
 
 
-	vector<Flight> flights;
+	// vector<Flight> flights;
+	unordered_map<string ,City*> cities;
 
 	ifstream reader;
 	reader.open(argv[1]);
 
-	string depCity;
-	string desCity;
+	string depCityN;
+	string destCityN;
 	string depTime;
 	string arrTime;
 	string cost;
 
-	while (reader.good()) {
-		reader >> depCity;
-		reader >> desCity;
-		reader >> depTime;
-		reader >> arrTime;
-		reader >> cost;
+	bool newDepCity = true;
+	bool newDestCity = true;
 
-		flights.push_back(Flight(depCity, desCity, depTime, arrTime, cost));
+	City *newCity;
+	Flight *newFlight;
+
+	while (reader >> depCityN >> destCityN >> depTime >> arrTime >> cost) {
+
+		// reader >> depCityN;
+		// reader >> destCityN;
+		// reader >> depTime;
+		// reader >> arrTime;
+		// reader >> cost;
+
+		newFlight = new Flight(depCityN, destCityN, depTime, arrTime, cost);
+
+
+		if (cities[depCityN] == NULL) {
+			newCity = new City(depCityN);
+			cities[depCityN] = newCity;
+		}
+
+		if (cities[destCityN] == NULL) {
+			newCity = new City(destCityN);
+			cities[destCityN] = newCity;
+		}
+
+		newFlight->destCity = cities[destCityN];
+		cities[depCityN]->flightsOut.push_back(newFlight);		
+
 	}
 	reader.close();
 
-	flights.pop_back();
+	// flights.pop_back();
 	
-
-	/**
-	for (auto i = flights.begin(); i != flights.end(); ++i) {
-		cout << i->depCity << endl;
-		cout << i->desCity << endl;
-		if (choice == 2 or choice == 3) {
-			cout << i->depTime << endl;
-			cout << i->arrTime << endl;
-		}
-		if (choice == 3)
-			cout << i->cost << endl;
-		cout << endl;
+	if (choose == "1") {
+		AnyItinerary(cities, departCity, arriveCity);
+	} else if (choose == "2") {
+		EarliestArrival(cities, departCity, arriveCity, departTime, arriveTime);
+	} else {	
+		LeastExpensive(cities, departCity, arriveCity, departTime, arriveTime);
 	}
-	**/
+
+	delete newCity;
+	delete newFlight;
 
 
 
 }
-
-/*
-   void setReturnFlights(string tripDepCity, int earliestDep, int earliestRet, vector<Flight>& flights) {
-
-   for (auto i = flights.begin(); i != flights.end(); ++i) {
-   if (i->depCity == tripDepCity && earliestDep < i->depTime) {
-   for (auto j = flights.begin() + 1; j != flights.end(); ++j) {
-   if (i->desCity == j->depCity && i->arrTime < j->depTime && earliestRet < j->depTime)
-   i->returnFlights->push_back(*j);
-   }
-   }
-   for (auto k = i->returnFlights->begin() + 1; k != i->returnFlights->end(); ++k) {
-   cout << k->depTime << endl;
-   }
-   }
-   }
-   */

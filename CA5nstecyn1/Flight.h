@@ -4,17 +4,19 @@
 
 using namespace std;
 
+class City;
+
 class Flight{
 	public:
-		string depCity;
-		string desCity;
+		string depCityN;
+		string destCityN;
 		int depTime;
 		int arrTime;
 		float cost;
-		vector<Flight>* returnFlights;
+		City *destCity;
 
 		Flight();
 		~Flight();
-		Flight(string depC, string desC, string depT, string arrT, string c);
+		Flight(string depCN, string destCN, string depT, string arrT, string c);
 		Flight(const Flight &f);
 };

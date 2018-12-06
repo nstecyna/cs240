@@ -1,28 +1,32 @@
 #include <stdlib.h>
-#include "Flight.h"
-
+//#include "Flight.h"
+#include "City.h"
 
 using namespace std;
 
+class City;
+
 Flight::Flight() {
-	depCity = "";
-	desCity = "";
+	depCityN = "";
+	destCityN = "";
 	depTime = 0;
 	arrTime = 0;
 	cost = 0.0;
-	returnFlights = new vector<Flight>;
+	destCity = nullptr;
 }
 
 Flight::~Flight() {
-	returnFlights->clear();
-	delete returnFlights;
+	/*
+	   if (destCity != nullptr)
+	   delete destCity;
+	   */
 }
 
-Flight::Flight(string depC, string desC, string depT, string arrT, string c) {
-	depCity = depC;
-	desCity = desC;
+Flight::Flight(string depCN, string destCN, string depT, string arrT, string c) {
+	depCityN = depCN;
+	destCityN = destCN;
 	cost = ::atof(c.substr(1).c_str());
-	returnFlights = new vector<Flight>;
+	destCity = nullptr;
 
 	// departure time
 	bool zeroInHour = false;
@@ -34,7 +38,7 @@ Flight::Flight(string depC, string desC, string depT, string arrT, string c) {
 	else
 		depTime = 60 * atoi(depT.substr(0, 2).c_str());
 	depTime += atoi(depT.substr(4, 2).c_str());
-	
+
 	if (depT[5] == 'p')
 		depTime += 720;
 
@@ -47,21 +51,17 @@ Flight::Flight(string depC, string desC, string depT, string arrT, string c) {
 	else
 		arrTime = 60 * atoi(arrT.substr(0, 2).c_str());
 	arrTime += atoi(arrT.substr(4, 2).c_str());
-	
+
 	if (arrT[5] == 'p')
 		arrTime += 720;
 
 }
 
 Flight::Flight(const Flight &f) {
-	depCity = f.depCity;
-	desCity = f.desCity;
+	depCityN = f.depCityN;
+	destCityN = f.destCityN;
 	depTime = f.depTime;
 	arrTime = f.arrTime;
 	cost = f.cost;
-	returnFlights = new vector<Flight>;
-
-	for (auto i = f.returnFlights->begin(); i != f.returnFlights->end(); ++i) {
-		returnFlights->push_back(*i);
-	}
+	destCity = f.destCity;
 }
