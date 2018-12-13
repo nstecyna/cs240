@@ -12,16 +12,16 @@ LLC:	LLC.h PlayingCard.o Player.o Game.o Main.o
 #	g++ -c LLC.cpp -o LLC.o
 
 PlayingCard.o:	PlayingCard.cpp PlayingCard.h
-	g++ -c PlayingCard.cpp -o PlayingCard.o
+	g++ -g -c PlayingCard.cpp -o PlayingCard.o
 
 Player.o:	Player.cpp Player.h
-	g++ -c Player.cpp -o Player.o
+	g++ -g -c Player.cpp -o Player.o
 
 Game.o:	Game.cpp Game.h
-	g++ -c Game.cpp -o Game.o
+	g++ -g -c Game.cpp -o Game.o
 
 Main.o:	Main.cpp LLC.h
-	g++ -c Main.cpp -o Main.o
+	g++ -g -c Main.cpp -o Main.o
 
 # Specify the object files and executables that are generated
 # and need to be removed to re-compile the whole thing

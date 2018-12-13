@@ -11,6 +11,7 @@ template <class T> class LLC {
 			public:
 				T data;
 				Node * next;
+				Node * prev;
 		};
 
 		Node * first;
@@ -91,6 +92,7 @@ bool LLC<T>::insert(const T & s) {
 	Node * temp = new Node;
 	temp->data = s;
 	temp->next = nullptr;
+	temp->prev = nullptr;
 
 	if (first == nullptr) {
 		first = temp;
@@ -98,6 +100,7 @@ bool LLC<T>::insert(const T & s) {
 		return true;
 	} else {
 		last->next = temp;
+		temp->prev = last;
 		last = temp;
 		return true;
 	}
@@ -113,9 +116,11 @@ void LLC<T>::remove(const T & s) {
 			first = temp->next;
 			prev = temp;
 			temp = prev->next;
+			temp->prev = nullptr;
 			delete prev;
 		} else if (temp->data == s) {
 			prev->next = temp->next;
+			temp->next->prev = prev;
 			delete temp;
 			temp = prev->next;
 			if (temp == nullptr) last = prev;
@@ -249,8 +254,15 @@ void LLC<T>::join(const LLC<T> &other) {
 template <class T>
 T LLC<T>::takeFirstElement() {
 	T data = first->data;
+	if (first->next == nullptr) {
+		delete first;
+		first = nullptr;
+		last = nullptr;
+		return data;
+	}
 	Node * temp = first;
 	first = first->next;
+	first->prev = nullptr;
 	delete temp;
 	return data;
 }
@@ -259,9 +271,8 @@ template <class T>
 T LLC<T>::takeLastElement() {
 	T data = last->data;
 	Node * temp = last;
-	last = first;
-	while (last->next != nullptr)
-		last = last->next;
+	last = temp->prev;
+	last->next = nullptr;
 	delete temp;
 	return data;
 }

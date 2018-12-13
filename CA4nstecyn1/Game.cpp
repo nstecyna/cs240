@@ -170,26 +170,17 @@ void Game::setDeck() {
 	   for (int j = 14; j > 1; j--) {
 	   cards->insert(PlayingCard(j, suits[i]));
 	   cout << cards->len() << endl;
-	   
-	   // don't know why this version doesn't work
-	   */
+
+	// don't know why this version doesn't work
+	*/
 	cards->shuffle();
 }
 
 void Game::dealCards(Player *p1, Player *p2) {
 	for (int i = 0; i < 26; i++) {
-		srand(time(0));
-		if (rand() % 2 == 0)
-			p1->cards->insert(cards->takeFirstElement());
-		else
-			p1->cards->insert(cards->takeLastElement());
+		p1->cards->insert(cards->takeLastElement());
 	}
 	for (int i = 26; i < 52; i++) {
-		srand(time(0));
-		if (rand() % 2 == 0)
-			p2->cards->insert(cards->takeFirstElement());
-		else
-			p2->cards->insert(cards->takeLastElement());
+		p2->cards->insert(cards->takeFirstElement());
 	}
-	cards->empty();
 }

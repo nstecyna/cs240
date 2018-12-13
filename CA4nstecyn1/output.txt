@@ -1,0 +1,192 @@
+===
+Jane VS. John
+	Battle 1: Jane AC DEFEATED John 2D : Jane 27, John 25
+	Battle 2: Jane AH DEFEATED John 2C : Jane 28, John 24
+	Battle 3: Jane 2S TIED John 2H : Jane 33, John 19
+	Battle 4: Jane KD DEFEATED John 3C : Jane 34, John 18
+	Battle 5: Jane KH DEFEATED John 4H : Jane 35, John 17
+	Battle 6: Jane QD DEFEATED John 4D : Jane 36, John 16
+	Battle 7: Jane QC DEFEATED John 4C : Jane 37, John 15
+	Battle 8: Jane QS DEFEATED John 5S : Jane 38, John 14
+	Battle 9: Jane QH DEFEATED John 5H : Jane 39, John 13
+	Battle 10: Jane JH DEFEATED John 5C : Jane 40, John 12
+	Battle 11: Jane JC DEFEATED John 5D : Jane 41, John 11
+	Battle 12: Jane JD DEFEATED John 6S : Jane 42, John 10
+	Battle 13: Jane JS DEFEATED John 6H : Jane 43, John 9
+	Battle 14: Jane 10D DEFEATED John 6D : Jane 44, John 8
+	Battle 15: Jane 10C DEFEATED John 7S : Jane 45, John 7
+	Battle 16: Jane 9H DEFEATED John 7H : Jane 46, John 6
+	Battle 17: Jane 10H DEFEATED John 7D : Jane 47, John 5
+	Battle 18: Jane 10S DEFEATED John 6C : Jane 48, John 4
+	Battle 19: Jane 9C DEFEATED John 8S : Jane 49, John 3
+	Battle 20: Jane 9D DEFEATED John 7C : Jane 50, John 2
+	Battle 21: Jane 8C TIED John 8D : Jane 52, John 0
+Jane DEFEATED John in 19 Battles and 2 Wars
+===
+Mark VS. Alice
+	Battle 1: Mark AC DEFEATED Alice 2D : Mark 27, Alice 25
+	Battle 2: Mark AH DEFEATED Alice 2H : Mark 28, Alice 24
+	Battle 3: Alice 2S DEFEATED Mark 3S : Mark 27, Alice 25
+	Battle 4: Mark AD DEFEATED Alice 2C : Mark 28, Alice 24
+	Battle 5: Mark KH DEFEATED Alice 3D : Mark 29, Alice 23
+	Battle 6: Mark AS DEFEATED Alice 3H : Mark 30, Alice 22
+	Battle 7: Mark KC DEFEATED Alice 4S : Mark 31, Alice 21
+	Battle 8: Mark KD DEFEATED Alice 3C : Mark 32, Alice 20
+	Battle 9: Mark KS DEFEATED Alice 4H : Mark 33, Alice 19
+	Battle 10: Mark QC DEFEATED Alice 4D : Mark 34, Alice 18
+	Battle 11: Mark JH DEFEATED Alice 4C : Mark 35, Alice 17
+	Battle 12: Mark QD DEFEATED Alice 5S : Mark 36, Alice 16
+	Battle 13: Mark QH DEFEATED Alice 5D : Mark 37, Alice 15
+	Battle 14: Mark QS DEFEATED Alice 5C : Mark 38, Alice 14
+	Battle 15: Mark JC DEFEATED Alice 5H : Mark 39, Alice 13
+	Battle 16: Mark JD DEFEATED Alice 6S : Mark 40, Alice 12
+	Battle 17: Mark 10C DEFEATED Alice 6H : Mark 41, Alice 11
+	Battle 18: Mark JS DEFEATED Alice 6D : Mark 42, Alice 10
+	Battle 19: Mark 10D DEFEATED Alice 7S : Mark 43, Alice 9
+	Battle 20: Mark 10H DEFEATED Alice 6C : Mark 44, Alice 8
+	Battle 21: Mark 9S DEFEATED Alice 7D : Mark 45, Alice 7
+	Battle 22: Mark 10S DEFEATED Alice 7C : Mark 46, Alice 6
+	Battle 23: Mark 9C DEFEATED Alice 8S : Mark 47, Alice 5
+	Battle 24: Mark 9D DEFEATED Alice 7H : Mark 48, Alice 4
+	Battle 25: Mark 9H DEFEATED Alice 8H : Mark 49, Alice 3
+	Battle 26: Mark 8D TIED Alice 8C : Mark 51, Alice 1
+	Battle 27: Mark AD DEFEATED Alice 3S : Mark 52, Alice 0
+Mark DEFEATED Alice in 25 Battles and 1 Wars
+===
+George VS. Susan
+	Battle 1: George AH DEFEATED Susan 2D : George 27, Susan 25
+	Battle 2: George AC DEFEATED Susan 2H : George 28, Susan 24
+	Battle 3: George 2S TIED Susan 2C : George 33, Susan 19
+	Battle 4: George KD DEFEATED Susan 4H : George 34, Susan 18
+	Battle 5: George KH DEFEATED Susan 4D : George 35, Susan 17
+	Battle 6: George KS DEFEATED Susan 3C : George 36, Susan 16
+	Battle 7: George QD DEFEATED Susan 4C : George 37, Susan 15
+	Battle 8: George QS DEFEATED Susan 5S : George 38, Susan 14
+	Battle 9: George QH DEFEATED Susan 5D : George 39, Susan 13
+	Battle 10: George JC DEFEATED Susan 5H : George 40, Susan 12
+	Battle 11: George JH DEFEATED Susan 6S : George 41, Susan 11
+	Battle 12: George JD DEFEATED Susan 5C : George 42, Susan 10
+	Battle 13: George JS DEFEATED Susan 6H : George 43, Susan 9
+	Battle 14: George 10D DEFEATED Susan 6C : George 44, Susan 8
+	Battle 15: George 10C DEFEATED Susan 7S : George 45, Susan 7
+	Battle 16: George 10H DEFEATED Susan 6D : George 46, Susan 6
+	Battle 17: George 10S DEFEATED Susan 7H : George 47, Susan 5
+	Battle 18: George 9C DEFEATED Susan 7D : George 48, Susan 4
+	Battle 19: George 9S DEFEATED Susan 7C : George 49, Susan 3
+	Battle 20: George 9D DEFEATED Susan 8S : George 50, Susan 2
+	Battle 21: George 9H DEFEATED Susan 8H : George 51, Susan 1
+	Battle 22: George 8D TIED Susan 8C : George 52, Susan 0
+George DEFEATED Susan in 21 Battles and 2 Wars
+===
+Frank VS. Betty
+	Battle 1: Frank AC DEFEATED Betty 2D : Frank 27, Betty 25
+	Battle 2: Frank AD DEFEATED Betty 2C : Frank 28, Betty 24
+	Battle 3: Betty 2S DEFEATED Frank 3S : Frank 27, Betty 25
+	Battle 4: Frank AS DEFEATED Betty 2H : Frank 28, Betty 24
+	Battle 5: Frank AH DEFEATED Betty 3H : Frank 29, Betty 23
+	Battle 6: Frank KD DEFEATED Betty 3C : Frank 30, Betty 22
+	Battle 7: Frank KC DEFEATED Betty 3D : Frank 31, Betty 21
+	Battle 8: Frank KH DEFEATED Betty 4S : Frank 32, Betty 20
+	Battle 9: Frank QC DEFEATED Betty 4H : Frank 33, Betty 19
+	Battle 10: Frank KS DEFEATED Betty 4C : Frank 34, Betty 18
+	Battle 11: Frank QS DEFEATED Betty 5S : Frank 35, Betty 17
+	Battle 12: Frank QD DEFEATED Betty 5H : Frank 36, Betty 16
+	Battle 13: Frank QH DEFEATED Betty 4D : Frank 37, Betty 15
+	Battle 14: Frank JC DEFEATED Betty 5C : Frank 38, Betty 14
+	Battle 15: Frank JH DEFEATED Betty 6S : Frank 39, Betty 13
+	Battle 16: Frank JD DEFEATED Betty 6H : Frank 40, Betty 12
+	Battle 17: Frank JS DEFEATED Betty 5D : Frank 41, Betty 11
+	Battle 18: Frank 9H DEFEATED Betty 6C : Frank 42, Betty 10
+	Battle 19: Frank 10C DEFEATED Betty 7S : Frank 43, Betty 9
+	Battle 20: Frank 10D DEFEATED Betty 6D : Frank 44, Betty 8
+	Battle 21: Frank 10H DEFEATED Betty 7D : Frank 45, Betty 7
+	Battle 22: Frank 10S DEFEATED Betty 7H : Frank 46, Betty 6
+	Battle 23: Frank 9C DEFEATED Betty 8S : Frank 47, Betty 5
+	Battle 24: Frank 9D DEFEATED Betty 8H : Frank 48, Betty 4
+	Battle 25: Frank 9S DEFEATED Betty 7C : Frank 49, Betty 3
+	Battle 26: Frank 8C TIED Betty 8D : Frank 51, Betty 1
+	Battle 27: Frank AS DEFEATED Betty 3S : Frank 52, Betty 0
+Frank DEFEATED Betty in 25 Battles and 1 Wars
+===
+Jane VS. Mark
+	Battle 1: Jane AD DEFEATED Mark 2D : Jane 27, Mark 25
+	Battle 2: Jane AC DEFEATED Mark 2C : Jane 28, Mark 24
+	Battle 3: Mark 2S DEFEATED Jane 3S : Jane 27, Mark 25
+	Battle 4: Jane AS DEFEATED Mark 3H : Jane 28, Mark 24
+	Battle 5: Jane AH DEFEATED Mark 3D : Jane 29, Mark 23
+	Battle 6: Jane KD DEFEATED Mark 2H : Jane 30, Mark 22
+	Battle 7: Jane KC DEFEATED Mark 3C : Jane 31, Mark 21
+	Battle 8: Jane KH DEFEATED Mark 4S : Jane 32, Mark 20
+	Battle 9: Jane QD DEFEATED Mark 4H : Jane 33, Mark 19
+	Battle 10: Jane KS DEFEATED Mark 4D : Jane 34, Mark 18
+	Battle 11: Jane QC DEFEATED Mark 4C : Jane 35, Mark 17
+	Battle 12: Jane JC DEFEATED Mark 5S : Jane 36, Mark 16
+	Battle 13: Jane QH DEFEATED Mark 5H : Jane 37, Mark 15
+	Battle 14: Jane QS DEFEATED Mark 5C : Jane 38, Mark 14
+	Battle 15: Jane JS DEFEATED Mark 6S : Jane 39, Mark 13
+	Battle 16: Jane JD DEFEATED Mark 6H : Jane 40, Mark 12
+	Battle 17: Jane JH DEFEATED Mark 5D : Jane 41, Mark 11
+	Battle 18: Jane 10C DEFEATED Mark 6D : Jane 42, Mark 10
+	Battle 19: Jane 9D DEFEATED Mark 6C : Jane 43, Mark 9
+	Battle 20: Jane 10D DEFEATED Mark 7S : Jane 44, Mark 8
+	Battle 21: Jane 10H DEFEATED Mark 7H : Jane 45, Mark 7
+	Battle 22: Jane 10S DEFEATED Mark 7D : Jane 46, Mark 6
+	Battle 23: Jane 9C DEFEATED Mark 8S : Jane 47, Mark 5
+	Battle 24: Jane 9S DEFEATED Mark 7C : Jane 48, Mark 4
+	Battle 25: Jane 9H DEFEATED Mark 8H : Jane 49, Mark 3
+	Battle 26: Jane 8C TIED Mark 8D : Jane 51, Mark 1
+	Battle 27: Jane AS DEFEATED Mark 3S : Jane 52, Mark 0
+Jane DEFEATED Mark in 25 Battles and 1 Wars
+===
+George VS. Frank
+	Battle 1: George AD DEFEATED Frank 2D : George 27, Frank 25
+	Battle 2: George AC DEFEATED Frank 2C : George 28, Frank 24
+	Battle 3: Frank 2S DEFEATED George 3S : George 27, Frank 25
+	Battle 4: George AS DEFEATED Frank 3H : George 28, Frank 24
+	Battle 5: George AH DEFEATED Frank 3D : George 29, Frank 23
+	Battle 6: George KD DEFEATED Frank 2H : George 30, Frank 22
+	Battle 7: George KC DEFEATED Frank 4S : George 31, Frank 21
+	Battle 8: George QC DEFEATED Frank 4H : George 32, Frank 20
+	Battle 9: George KH DEFEATED Frank 4D : George 33, Frank 19
+	Battle 10: George KS DEFEATED Frank 3C : George 34, Frank 18
+	Battle 11: George QD DEFEATED Frank 4C : George 35, Frank 17
+	Battle 12: George JC DEFEATED Frank 5S : George 36, Frank 16
+	Battle 13: George QH DEFEATED Frank 5H : George 37, Frank 15
+	Battle 14: George QS DEFEATED Frank 5C : George 38, Frank 14
+	Battle 15: George 10D DEFEATED Frank 5D : George 39, Frank 13
+	Battle 16: George JD DEFEATED Frank 6H : George 40, Frank 12
+	Battle 17: George JH DEFEATED Frank 6S : George 41, Frank 11
+	Battle 18: George JS DEFEATED Frank 6D : George 42, Frank 10
+	Battle 19: George 10C DEFEATED Frank 6C : George 43, Frank 9
+	Battle 20: George 10H DEFEATED Frank 7S : George 44, Frank 8
+	Battle 21: George 9C DEFEATED Frank 7D : George 45, Frank 7
+	Battle 22: George 10S DEFEATED Frank 7C : George 46, Frank 6
+	Battle 23: George 9D DEFEATED Frank 8S : George 47, Frank 5
+	Battle 24: George 8C TIED Frank 8H : George 52, Frank 0
+George DEFEATED Frank in 22 Battles and 1 Wars
+===
+Jane VS. George
+	Battle 1: Jane AD DEFEATED George 2H : Jane 27, George 25
+	Battle 2: Jane AC DEFEATED George 2D : Jane 28, George 24
+	Battle 3: Jane 2S TIED George 2C : Jane 33, George 19
+	Battle 4: Jane KD DEFEATED George 4S : Jane 34, George 18
+	Battle 5: Jane KS DEFEATED George 4H : Jane 35, George 17
+	Battle 6: Jane QH DEFEATED George 4D : Jane 36, George 16
+	Battle 7: Jane QC DEFEATED George 4C : Jane 37, George 15
+	Battle 8: Jane QD DEFEATED George 5S : Jane 38, George 14
+	Battle 9: Jane QS DEFEATED George 5D : Jane 39, George 13
+	Battle 10: Jane JC DEFEATED George 5C : Jane 40, George 12
+	Battle 11: Jane JH DEFEATED George 5H : Jane 41, George 11
+	Battle 12: Jane JD DEFEATED George 6H : Jane 42, George 10
+	Battle 13: Jane 10C DEFEATED George 6S : Jane 43, George 9
+	Battle 14: Jane JS DEFEATED George 6C : Jane 44, George 8
+	Battle 15: Jane 10D DEFEATED George 6D : Jane 45, George 7
+	Battle 16: Jane 10H DEFEATED George 7H : Jane 46, George 6
+	Battle 17: Jane 10S DEFEATED George 7S : Jane 47, George 5
+	Battle 18: Jane 9C DEFEATED George 7D : Jane 48, George 4
+	Battle 19: Jane 9D DEFEATED George 7C : Jane 49, George 3
+	Battle 20: Jane 9S DEFEATED George 8S : Jane 50, George 2
+	Battle 21: Jane 9H DEFEATED George 8H : Jane 51, George 1
+	Battle 22: Jane 8D TIED George 8C : Jane 52, George 0
+Jane DEFEATED George in 21 Battles and 2 Wars
+Winner: Jane. Average number of battles in the tournament: 24 The greatest number of battles in a single tournament was 27
